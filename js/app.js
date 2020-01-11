@@ -23,16 +23,25 @@ window.addEventListener('DOMContentLoaded', function(){
                     return 0
             })
         
-            //insert movie titles into select with option values
+            //inserts movie titles into options, value equal to movie's id
             const movieList = document.querySelector("#movieChooser");
-            let i = 1;
             for(let d of data){
                 let movieTitle = document.createElement("option");
-                movieTitle.setAttribute("value", i);
+                movieTitle.setAttribute("value", d.id);
                 movieTitle.textContent = d.title;
                 movieList.appendChild(movieTitle);
-                i++;
             }
+        
+            //Event handler for click event of add button.
+            document.querySelector("#btnAdd").addEventListener("click", function(){
+                let selectValue = movieList.options[movieList.selectedIndex].value;
+                if(selectValue > 0){
+                    
+                }
+                //if(e.value) 
+            });
+        
+        
             console.log(data[0].title);
             console.log(data);
             
@@ -42,12 +51,3 @@ window.addEventListener('DOMContentLoaded', function(){
             //console.log("Shit's not working");
         });
 });
-
-    /*    
-    .then(function(response){
-        return reponse.json();
-    })
-    .then(res => res.json())
-    .then(posts => console.log(posts))
-    */
-
