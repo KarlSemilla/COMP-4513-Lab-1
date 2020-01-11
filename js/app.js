@@ -9,8 +9,33 @@ window.addEventListener('DOMContentLoaded', function(){
             //let hideSearch = document.querySelector("#selector").classList.add("is-hidden");
             let hideLoader = document.querySelector("#loader").classList.add("is-hidden");
             let showSelector = document.querySelector("#selector").classList.remove("is-hidden");
-            data.sort();
+            let movieInfo = [];
+            
+            //sort fetched array
+            data.sort(function(a,b){
+                if(a.title > b.title){
+                    return 1
+                }
+                else if(a.title < b.title){
+                    return -1
+                }
+                else 
+                    return 0
+            })
+        
+            //insert movie titles into select with option values
+            const movieList = document.querySelector("#movieChooser");
+            let i = 1;
+            for(let d of data){
+                let movieTitle = document.createElement("option");
+                movieTitle.setAttribute("value", i);
+                movieTitle.textContent = d.title;
+                movieList.appendChild(movieTitle);
+                i++;
+            }
+            console.log(data[0].title);
             console.log(data);
+            
 
         })
         .catch(function(error){
