@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', function(){
                 //Checks if selected movie id is greater than 0
                 if(selectValue > 0){
                     for(let d of data){
+                        //Checks if id is found in fetched data
                         if(selectValue == d.id){
                             let selectFavorites = document.querySelector("#favorites");
                             let createListing = document.createElement("li");
@@ -56,16 +57,16 @@ window.addEventListener('DOMContentLoaded', function(){
                         }
                     }
                 }
-                //if(e.value) 
             });
-        
-        
-            console.log(data[0].title);
-            console.log(data);
             
+            //Event handler for click event on clear button
+            document.querySelector("#btnClear").addEventListener("click", function(){
+                document.querySelector("#favorites").innerHTML = " ";
+                
+            });
 
         })
         .catch(function(error){
-            //console.log("Shit's not working");
+            
         });
 });
