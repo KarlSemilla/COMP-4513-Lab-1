@@ -34,9 +34,27 @@ window.addEventListener('DOMContentLoaded', function(){
         
             //Event handler for click event of add button.
             document.querySelector("#btnAdd").addEventListener("click", function(){
+                //alert("Button was clicked");
                 let selectValue = movieList.options[movieList.selectedIndex].value;
+                
+                //Checks if selected movie id is greater than 0
                 if(selectValue > 0){
-                    
+                    for(let d of data){
+                        if(selectValue == d.id){
+                            let selectFavorites = document.querySelector("#favorites");
+                            let createListing = document.createElement("li");
+                            createListing.setAttribute("class", "panel-block");
+                            
+                            //Adds html for selected movie title, includes title and image
+                            createListing.innerHTML = `<figure class="media-left"> 
+                                                        <img src="https://image.tmdb.org/t/p/w92${d.poster}">
+                                                        </figure>
+                                                        <p class="media-content">${d.title}</p>
+                                                        `;
+                            
+                            selectFavorites.appendChild(createListing);
+                        }
+                    }
                 }
                 //if(e.value) 
             });
