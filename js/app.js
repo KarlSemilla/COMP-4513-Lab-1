@@ -1,6 +1,8 @@
 // add code here -- do your data fetch and manipulations after DOM loaded
 window.addEventListener('DOMContentLoaded', function(){
     document.querySelector("#selector").classList.add("is-hidden");
+    
+    document.querySelector("#favorites").innerHTML = "";
     fetch('http://www.randyconnolly.com/funwebdev/3rd/api/movie/movies.php')
         .then(function(response){
             return response.json();
