@@ -1,14 +1,14 @@
 // add code here -- do your data fetch and manipulations after DOM loaded
 window.addEventListener('DOMContentLoaded', function(){
+    //Hides the search bar and the pre-loaded favorites.
     document.querySelector("#selector").classList.add("is-hidden");
+    //document.querySelector("#favorites").innerHTML = "";
     
-    document.querySelector("#favorites").innerHTML = "";
     fetch('http://www.randyconnolly.com/funwebdev/3rd/api/movie/movies.php')
         .then(function(response){
             return response.json();
         })
         .then(function(data){
-            //let hideSearch = document.querySelector("#selector").classList.add("is-hidden");
             let hideLoader = document.querySelector("#loader").classList.add("is-hidden");
             let showSelector = document.querySelector("#selector").classList.remove("is-hidden");
             let movieInfo = [];
@@ -36,7 +36,6 @@ window.addEventListener('DOMContentLoaded', function(){
         
             //Event handler for click event of add button.
             document.querySelector("#btnAdd").addEventListener("click", function(){
-                //alert("Button was clicked");
                 let selectValue = movieList.options[movieList.selectedIndex].value;
                 
                 //Checks if selected movie id is greater than 0
